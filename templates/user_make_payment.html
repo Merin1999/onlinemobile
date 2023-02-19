@@ -1,0 +1,45 @@
+{% include 'user_header.html'  %} 
+
+  <br><br><br><br>
+    <center>
+
+
+        <style type="text/css">
+            td{background-color: transparent;font-weight: 2px;color: black}
+            hr{border-color: orange}
+            #b {
+                border: 1px solid grey; 
+                padding: 10px;
+                }
+    </style>
+    <br>
+        <form method="post">
+            {% csrf_token %}	
+        
+        <table border="5" class="table" style="width: 500px;">
+    
+            <table style="width: 500px; border-radius: 5px;" class="table table-borderless" id="b"> 
+                <tr> 
+                    <td>PAYMENT DETAILS</td> 
+                    <td colspan="2" align="right"><img src="/static/raz.png" style="width:70%"></td>
+                </tr>  
+                <tr> 
+                    <td colspan="2"> <small>Amount</small><br> 
+                        <input type="text" placeholder="CARD NUMBER" value="{{total}}"  class="form-control" required >
+    
+                    </td> 
+                <tr> 
+                    <td> 
+                        <input type="submit" value="PAY"  class="btn btn-success" style="width: 100%" name="pay">
+    
+    
+                    </td>
+                </tr>
+            </table>
+    
+    
+        </div>
+    </form>
+</center>
+<br><br><br><br><br><br>
+  {% include 'footer.html'  %} 

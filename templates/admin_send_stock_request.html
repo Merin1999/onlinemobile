@@ -1,0 +1,55 @@
+{% include 'admin_header.html'  %} 
+
+
+<script type="text/javascript">
+    function TextOnTextChange()
+    {
+        var x =document.getElementById("p_amount").value;
+        var y =document.getElementById("p_qnty").value;
+        document.getElementById("t_amount").value = x * y;
+    }
+
+</script>   
+
+<br><br>
+<center>
+<div >
+   
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <h4>Send Request</h4>
+          </div>
+         
+          <table class="table" style="width:700px" border="4">
+          <tr>
+            <th>Quantity</th>
+            <td><input type="text" class="form-control" id="p_qnty" onchange="TextOnTextChange()"  required  name="qu"></td>
+        </tr>
+        <tr>
+            <th>Amount</th>
+            <td><input type="text" class="form-control" value="{{amt}}" required id="p_amount" name="rate"></td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td><input type="text" class="form-control" required  id="t_amount"  name="tt"></td>
+        </tr>
+        
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" name="submit" value="SEND" class="btn btn-danger"></td>
+                </tr>
+            </table>
+
+
+
+
+
+
+            </div>
+       
+
+
+             
+  
+    </center>
+    <br><br><br><br><br><br><br><br>
+{% include 'footer.html'  %} 

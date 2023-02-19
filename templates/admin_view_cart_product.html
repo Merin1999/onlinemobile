@@ -1,0 +1,67 @@
+{% include "admin_header.html" %}
+
+<br><br><br><br><br><br>
+<center>
+<div >
+   
+       
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            {% if q %}
+            <h1>Product Details</h1>
+                <table class="table table-striped" style="width:1000px" border="3">
+                    <center>
+                        <tr>
+                            <th>SL.NO</th>
+                            <th>Product Name</th>
+                            <th>Image</th>
+                            <th>quantity</th>
+                            <th>rate</th>
+                            <th>Total</th>
+                        </tr>
+                            {% for i in q %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i.product.product_name}}</td>
+                            
+                            <td><img src="/static/uploads/{{i.product.image}}" height="200" width="200" alt="" /></td>
+                            <td>{{i.quantity}}</td>
+                            <td>{{i.product.rate}}</td>
+                            <td>{{i.amount}}</td>  
+                        </tr>
+                            {% endfor %}
+                
+                          <tr>
+                          <td colspan="6" align="center"><h2>Total : {{omtotal}}</h2></td>
+                          </tr>
+                    </table>
+                    {% else %}
+                    <br><br>
+                
+                    
+                    {% endif %}
+        </center>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+       
+
+
+
+    
+    
+
+{% include "footer.html" %}
+
+
+
+
+
+
+
+
+
+

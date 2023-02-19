@@ -1,0 +1,73 @@
+{% include "user_header.html" %}
+
+<div class="hero-wrap hero-bread" style="background-image: url('/static/public/images/bg_1.jpg');">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="/user_home">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+          <h1 class="mb-0 bread">Products</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+ 
+  <section class="ftco-section ftco-cart">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12 ftco-animate">
+            <div class="cart-list">
+                <table class="table" border="5">
+                    <thead class="thead-primary">
+                      <tr class="text-center">
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                        <th>Product name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in q %}
+                      <tr class="text-center">
+                        {% comment %} <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td> {% endcomment %}
+                        <td></td>
+                        
+                        <td class="image-prod"><div class="img" style="background-image:url(/static/uploads/{{i.product.image}});"></div></td>
+                        
+                        <td class="product-name">
+                            <h3>{{i.product.product_name}}</h3>
+                            <p>{{i.product.p_description}}</p>
+                        </td>
+                        
+                        <td class="price">{{i.product.rate}}</td>
+                        
+                        <td class="quantity">
+                            <div class="input-group mb-3">
+                             <input type="text" name="quantity" readonly class="quantity form-control input-number" value={{i.quantity}}>
+                          </div>
+                      </td>
+                        
+                        <td class="total">{{i.amount}}</td>
+                        {% endfor %}
+                      </tr><!-- END TR-->
+                      <tr>
+                       <th align="center" colspan="6"><center><span><h2>Total : {{omtotal}}</th> 
+                      </tr>
+                     
+
+
+                    </tbody>
+                  </table>
+              </div>
+        </div>
+    </div>
+   
+</section>
+
+
+ 
+{% include "footer.html" %}

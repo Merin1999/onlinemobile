@@ -1,0 +1,133 @@
+{% include 'admin_header.html'  %} 
+
+<br><br><br><br>
+<center>
+<div>
+   
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <h4>Manage Products</h4>
+          </div>
+          {% if up %}
+          <table class="table" style="width:700px" border="4">
+          <tr>
+            <th>Product</th>
+            <td><input type="text" class="form-control" required value="{{up.product_name}}" name="pro"></td>
+        </tr>
+        <tr>
+            <th>Rate</th>
+            <td><input type="text" class="form-control" required value="{{up.rate}}" name="rate"></td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td><input type="text" class="form-control" required value="{{up.stock}}" name="qu"></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><input type="text" value="{{up.p_description}}" class="form-control" required name="des"></td>
+        </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" name="submit" value="UPDATE" class="btn btn-danger"></td>
+                </tr>
+            </table>
+
+
+
+
+
+
+{% else %}
+
+
+
+              <table class="table" style="width:700px" border="4">
+                <tr>
+                    <th>Dealer</th>
+                    <td>
+                        <select name="dea" required class="form-control">
+                            <option>--select--</option>
+                            {% for i in d %}
+                            <option value="{{i.id}}">{{i.fname}} {{i.lname}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+               </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>
+                        <select name="cat" required class="form-control">
+                            <option>--select--</option>
+                            {% for i in q1 %}
+                            <option value="{{i.id}}">{{i.category}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+               </tr>
+               <tr>
+                <th>Product</th>
+                <td><input type="text" class="form-control" required name="pro"></td>
+            </tr>
+            <tr>
+                <th>Rate</th>
+                <td><input type="text" class="form-control" required name="rate"></td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td><input type="text" class="form-control" required name="qu"></td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><input type="file" class="form-control" required name="img"></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><input type="text" class="form-control" required name="des"></td>
+            </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-danger"></td>
+                    </tr>
+              </table>
+            </form>
+              <br><br><br>
+              <table class="table" style="width: 900px;" border="5">
+                <tr>
+                    <th>SL.No</th>
+                    <th>Dealer</th>
+                    <th>Category</th>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    </tr>
+                  {% for i in q %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.dealer.fname}} {{i.dealer.lname}}</td>
+                    <td>{{i.category.category}}</td>
+                    <td>{{i.product_name}}</td>
+                    <td>{{i.rate}}</td>
+                    <td>{{i.stock}}</td>
+                    <td><img src="/static/uploads/{{i.image}}" height="100" weight="100"></td>
+                    <td><textarea name="" id="" cols="30" rows="10">{{i.p_description}}</textarea></td>
+                    <td>
+                        <a class="btn btn-info" href="/admin_delete_product/{{i.id}}">Delete</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" href="/admin_update_product/{{i.id}}">Update</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+          
+              </table>
+
+              {% endif %}
+            </div>
+       
+
+
+             
+  
+    </center>
+    <br><br><br><br>
+{% include 'footer.html'  %} 

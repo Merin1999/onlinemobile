@@ -1,0 +1,125 @@
+{% include 'public_header.html'  %} 
+
+
+
+                <script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+<script>
+    $(function() {
+        $("input[name='fn']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        $("input[name='ln']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+        // $("input[name='dob']").on('input', function(e) {
+        //     $(this).val($(this).val().replace(/[^0-9/]/g, ''));
+
+        // });
+        
+        $("input[name='ph']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        $("input[name='pincode']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9]/g, ''));
+            
+        });
+        $("input[name='em']").on('input', function(e) {
+              var re = /([A-Z0-9a-z_-][^@])+?@[^$#<>?]+?\.[\w]{1,}/.test(this.value);
+                if(!re) {
+                    $('#eerror').show();
+                } else {
+                    $('#eerror').hide();
+                }
+
+        });
+        $("input[name='address']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z0-9()/. ]/g, ''));
+
+        });
+        $("input[name='pl']").on('input', function(e) {
+            $(this).val($(this).val().replace(/[^A-Za-z ]/g, ''));
+
+        });
+            
+        $("input[name='pwd']").on('input', function(e) {
+        	$(this).val($(this).val().replace(/[^0-9A-Za-z@/. ]/g, ''));
+            
+        });
+    });
+
+
+
+   var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+</script>
+
+             
+                
+  
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Company Register</h5>
+        </div>
+        <div class="modal-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="col-form-label">First Name</label>
+                    <input type="text" class="form-control" placeholder=" " name="fn" required="">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder=" " name="ln" required="">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Place</label>
+                    <input type="text" class="form-control" placeholder=" " name="pl" required="">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Phone</label>
+                    <input type="text" class="form-control" placeholder=" "  pattern=[0-9]{10} name="ph" required="">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Email</label>
+                    <input type="email" class="form-control" placeholder=" " name="em" required="">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">User Name</label>
+                    <input type="text" class="form-control" placeholder=" " name="uname" required="">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Password</label>
+                    <input type="password" class="form-control" placeholder=" " name="pwd" id="password" onkeyup='check();' required="">
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label">Confirm Password</label>
+                    <input type="password" class="form-control" placeholder=" "name="cpwd" id="confirm_password"  onkeyup='check();' required="">
+                </div>
+                <div class="right-w3l">
+                    <input type="submit" class="form-control" value="Register">
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+</div>         
+      
+
+<br><br> <br><br> <br><br> <br><br> <br><br>
+
+{% include 'footer.html'  %} 

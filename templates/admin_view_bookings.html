@@ -1,0 +1,76 @@
+{% include "admin_header.html" %}
+
+<br><br>
+<center>
+<div >
+   
+       
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" style="width: 900px;" border="5">
+            <center>
+                {% if q %}
+                <h1>Bookings</h1>
+           
+                <tr>
+                    <th>SL.NO</th>
+                    <th>Customer</th>
+                    <th>Email</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Status</th>
+                </tr>
+                    {% for row in q %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{row.user.fname}} {{row.user.lname}}</td>
+                    <td>{{row.user.email}}</td>
+                    <td>{{row.total}}</td>
+                    <td>{{row.date}}</td>
+                    <td><a class="btn btn-primary" href="/admin_view_cart_product/{{row.id}}">Product Details</a></td>
+                   
+                   <td> <a class="btn btn-success" href="/admin_view_payments/{{row.id}}">View Payment</a></td>
+                    {% if row.status == "Paid" %}
+                    <td>
+                        <a class="btn btn-warning" href="/admin_update_status/{{row.id}}">Delivered</a>
+                       
+                    </td>
+                    {% else %}
+                    <td>{{row.status}}</td>
+                    {% endif %}
+        
+                </tr>
+                    {% endfor %}
+            </table>
+            {% else %}
+            <br><br>
+            <h2>NO BOOKINGS</h2>
+            
+            <br><br><br><br>
+            {% endif %}
+</center>
+</table>
+        </div>
+      </div>
+    </div>
+  </div>
+       
+
+  <br><br><br><br><br><br><br><br>
+
+    
+    
+
+{% include "footer.html" %}
+
+
+
+
+
+
+
+
+
+

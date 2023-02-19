@@ -1,0 +1,52 @@
+{% include "admin_header.html" %}
+
+
+
+<br><br>
+<center>
+<div >
+   
+       
+        <h4 class="card-title"> Company</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table" style="width: 900px;" border="5">
+            <tr>
+                <th style="color:black">SL.NO</th>
+                <th style="color:black">Name</th>
+                <th style="color:black">Place</th>
+                <th style="color:black">Phone</th>
+                <th style="color:black">Email</th>
+            </tr>
+                {% for row in ss %}
+            <tr>
+                <td style="color:black">{{forloop.counter}}</td>
+                <td style="color:black">{{row.fname}} {{row.lname}}</td>
+                <td style="color:black">{{row.place}}</td>
+                <td style="color:black">{{row.phone}}</td>
+                <td style="color:black">{{row.email}}</td>
+
+                {% if row.login.usertype == "pending" %}
+                <td>
+                    <a class="btn btn-primary" href="/admin_accept_dealer/{{row.login_id}}">Accept</a>
+                    <a class="btn btn-info" href="/admin_reject_dealer/{{row.login_id}}">Reject</a>
+                </td>
+               
+                {% endif %}
+            </tr>
+           
+                {% endfor %}
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+       
+
+
+
+    
+  <br><br><br><br><br><br><br><br>
+
+{% include "footer.html" %}

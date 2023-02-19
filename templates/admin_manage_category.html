@@ -1,0 +1,54 @@
+{% include "admin_header.html" %}
+<br><br><br>
+
+<center>
+<div >
+   
+           <form method="post">
+            {% csrf_token %}
+            <h4>Category</h4>
+          </div>
+              <table class="table" style="width:700px" border="4">
+                  <tr>
+                      <th style="color:black">Category</th>
+                      <td><input type="text" name="cat" class="form-control" required></td>
+                  </tr>
+      
+                  <tr>
+                      <td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-danger"></td>
+                  </tr>
+                
+             
+              </table>
+            </form>
+              <br><br><br>
+              <table class="table" style="width: 700px;" border="5">
+                <tr>
+                    <th style="color:black">SL.No</th>
+                    <th style="color:black">Category</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in q %}
+                <tr>
+                    <td style="color:black">{{forloop.counter}}</td>
+                   
+                    <td style="color:black">{{i.category}}</td>
+                    <td>
+                        <a class="btn btn-info" href="/admin_remove_category/{{i.id}}"><img src="static/delete.png" height="30" width="30"></a>
+                    </td>
+                   
+                </tr>
+                {% endfor %}
+        
+            </table>
+            </div>
+       
+       
+       
+
+
+
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+
+{% include "footer.html" %}

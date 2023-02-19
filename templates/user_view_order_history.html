@@ -1,0 +1,36 @@
+{% include "user_header.html" %}
+
+
+    <center>
+        {% if q %}
+        <h1>My Orders</h1>
+    <table class="table" style="width: 1000px;" border="5">
+        <tr>
+            <th>SL.NO</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+            {% for row in q %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{row.total}}</td>
+            <td>{{row.date}}</td>
+            <td>{{row.status}}</td>
+            <td><a class="btn btn-primary" href="/user_view_cart_history_product/{{row.id}}">Product Details</a></td>
+            {% if row.status == "Paid" %}
+            <td><a class="btn btn-info" href="/user_view_payment_details/{{row.id}}">View Payments</a></td>
+   {% endif %}
+           
+        </tr>
+            {% endfor %}
+    </table>
+    {% else %}
+    <br><br>
+    <h2>NO DATA</h2>
+    <br><br><br><br>
+    {% endif %}
+</center>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include "footer.html" %}

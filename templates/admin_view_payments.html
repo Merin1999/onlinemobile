@@ -1,0 +1,57 @@
+{% include "admin_header.html" %}
+
+<br><br><br><br><br><br>
+<center>
+<div >
+   
+       
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            {% if q %}
+            <h1>Payment Details</h1>
+                <table class="table table-striped" style="width:1000px" border="3">
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>Order_ID</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                    </tr>
+                        {% for row in q %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{row.order_id}}</td>
+                        <td>{{row.amount}}</td>
+                        <td>{{row.date}}</td>
+                    </tr>
+                        {% endfor %}
+                </table>
+                    {% else %}
+                    <br><br>
+                
+                    
+                    {% endif %}
+        </center>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+       
+
+
+
+    
+    
+
+{% include "footer.html" %}
+
+
+
+
+
+
+
+
+
+

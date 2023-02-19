@@ -1,0 +1,35 @@
+{% include "user_header.html" %}
+<br><br><br><br>
+    <center>
+        {% if q %}
+        <h1>MY CART</h1>
+    <table class="table" style="width: 1000px;" border="5">
+        <tr>
+            <th>SL.NO</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th>Product</th>
+        </tr>
+            {% for row in q %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{row.total}}</td>
+            <td>{{row.date}}</td>
+            <td><a class="btn btn-primary" href="/user_view_cart_product/{{row.id}}">Product Details</a></td>
+
+           
+        </tr>
+            {% endfor %}
+    </table>
+    {% else %}
+    <br><br>
+    <h2>NO DATA</h2>
+    <li><a class="btn btn-success" href="/user_view_products">ADD PRODUCTS</a></li>
+    <br><br><br><br>
+    {% endif %}
+</center>
+
+
+
+<br><br><br><br><br><br><br><br>
+{% include "footer.html" %}

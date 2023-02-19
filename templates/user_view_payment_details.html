@@ -1,0 +1,41 @@
+{% include "user_header.html" %}
+<div class="hero-wrap hero-bread" style="background-image: url('/static/public/images/bg_1.jpg');">
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="/user_home">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+          <h1 class="mb-0 bread">Payment Details</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <center>
+        {% if q %}
+        <h1>Payment</h1>
+    <table class="table" style="width: 800px;" border="5">
+        <tr>
+            <th>SL.NO</th>
+            <th>Order_ID</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+            {% for row in q %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{row.order_id}}</td>
+            <td>{{row.total}}</td>
+            <td>{{row.date}}</td>
+        </tr>
+            {% endfor %}
+    </table>
+    {% else %}
+    <br><br>
+    <h2>NO DATA</h2>
+    
+    <br><br><br><br>
+    {% endif %}
+</center>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% include "footer.html" %}
