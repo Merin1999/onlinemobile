@@ -1,6 +1,8 @@
 {% include "dealer_header.html" %}
 
- <br><br><br><br><br><br>
+<div style="width: 100%;height: 300px;background: url('/static/latest/assets/img/banner.jpg');background-size: cover;background-position: top;">
+
+</div>
 <center>
 <div >
    
@@ -10,7 +12,7 @@
         <div class="table-responsive">
             {% if q %}
             <h1>View Request</h1>
-                <table class="table table-striped" style="width:1000px" border="3">
+                <table class="table table-striped bclr" style="width:1000px" >
                     <tr>
                         <th>SL.NO</th>
                         <th>Product</th>
@@ -26,6 +28,13 @@
                         <td>{{row.qty}}</td>
                         <td>{{row.date}}</td>
                         {% if row.rstatus == "pending" %}
+                        <td>
+                            <a class="btn btn-primary" href="/admin_accept_request/{{row.id}}">Accept</a>
+                            <a class="btn btn-info" href="/admin_reject_request/{{row.id}}">Reject</a>
+                        </td>
+                       
+
+                        {% elif row.rstatus == "paid" %}
                         <td>
                             <a class="btn btn-info" href="/dealer_update_stock/{{row.product_id}}/{{row.qty}}/{{row.id}}">UPDATE STOCK</a>
                         </td>

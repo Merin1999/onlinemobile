@@ -1,0 +1,113 @@
+
+
+    {% include 'user_header.html' %}
+
+
+    <!-- contact -->
+   <div class="mail py-5" id="contact">
+       <div class="container pb-xl-5 pb-lg-3">
+           <div class="price-sty position-relative mb-5">
+               {% comment %} <h3 class="tittle text-center text-bl mb-2"></h3> {% endcomment %}
+               <span class="text-style-bot font-weight-bold"></span>
+           </div>
+           <div class="row pt-4">
+               <div class="col-lg-7 contctf_mail_grid_right">
+                  
+                   <form method="post">
+                       {% csrf_token %}
+                       
+                       {% if up %}
+                       <h1>Edit Profile</h1>
+                       <table class="table" style="width:500px;color:black;background-color: white;padding: 30px;">
+                           <tr>
+                               <th>First Name</th>
+                               <td><input type="text" value={{up.fname}} name="fn" class="form-control" required></td>
+                           </tr>
+                           <tr>
+                               <th>Last Name</th>
+                               <td><input type="text" value={{up.lname}} name="ln" class="form-control" required></td>
+                           </tr>
+                           <tr>
+                               <th>Phone</th>
+                               <td><input type="text" value={{up.phone}} pattern=[0-9]{10}  maxlength="10" name="ph" class="form-control" required></td>
+                           </tr>
+                           <tr>
+                               <th>Email</th>
+                               <td><input type="email" value={{up.email}} name="em" class="form-control" required></td>
+                           </tr>
+                           <tr>
+                               <td colspan="2" align="center"><input type="submit" name="submit" value="UPDATE" class="btn btn-danger"></td>
+                           </tr>
+                       </table>
+               
+                       {% else %}
+               
+                       <h2 style="color: white">My Profile</h2>
+                   
+                       <table class="table" border="4" style="width:500px;color:balck;background-color: white;padding: 30px;">
+                           {% for i in q1 %}
+                           <tr>
+                               <th>First Name :</th>
+                               <td>{{i.fname}}</td>
+                           </tr>
+                           <tr>
+                               <th>Last Name :</th>
+                               <td>{{i.lname}}</td>
+                           </tr>
+                           <tr>
+                               <th>Place :</th>
+                               <td>{{i.place}}</td>
+                           </tr>
+                           <tr>
+                               <th>Phone :</th>
+                               <td>{{i.phone}}</td>
+                           </tr>
+                           <tr>
+                               <th>Email :</th>
+                               <td>{{i.email}}</td>
+                           </tr>
+                           <tr>
+                               <td colspan="2" align="center"><a class="btn btn-info" href="/customer_edit_profile/{{i.id}}">Edit</a></td>
+                           </tr>
+                           {% endfor %}
+                       </table>
+                      {% endif %}
+                   
+                   </form>
+               </div>
+           </div>
+       </div>
+   </div>
+   <br><br> <br><br> <br>
+   {% comment %} <!-- banner -->
+       <div class="banner_w3lspvt">
+           <div class="container-fluid">
+               <div class="w3ls_banner_txt pl-sm-5">
+                   <h2>Forgot Password<span class="text-primary">.</span></h2>
+                   <form method="post" action="got" enctype="multipart/form-data" >
+                     <table class="table" style="width: 500px;color: black" >
+                       <tr width="500">
+                         <td>:</td>
+                         <td><input type="email" class="form-control" name="uname"></td>
+                       </tr>
+                       <tr>
+                         <td>:</td>
+                         <td><input type="text"   class="form-control" name="ph"></td>
+                       </tr>
+                       <tr>
+                         <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="forgot" value="Submit"></td>
+                       </tr> 
+           
+                      
+                     </table>
+                   </form>
+               </div>
+           </div>
+       </div>
+       <!-- //banner --> {% endcomment %}
+
+   
+          
+
+{% include 'footer.html' %}
+        

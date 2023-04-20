@@ -1,33 +1,34 @@
-{% include 'admin_header.html'  %} 
+{% extends 'mainadmin.html' %}
+
+{% block mainsec %}
 
 
-<script type="text/javascript">
-    function TextOnTextChange()
-    {
-        var x =document.getElementById("p_amount").value;
-        var y =document.getElementById("p_qnty").value;
-        document.getElementById("t_amount").value = x * y;
-    }
-
-</script>   
 
 <br><br>
 <center>
 <div >
    
-    <form method="post" enctype="multipart/form-data">
+    <form  method="post" enctype="multipart/form-data" >
         {% csrf_token %}
-            <h4>Send Request</h4>
+            <h4 class="moveup">Send Request</h4>
           </div>
          
-          <table class="table" style="width:700px" border="4">
+          <table class="table bclr" style="width:700px" >
+            <tr>
+                <th style="color: black;">Product Name</th>
+                <td style="color: black;"><input type="text"  style="border: 1px solid black;" value={{q.product_name}} name="pro" readonly class="form-control" required></td>
+            </tr>
+            <tr>
+              <th style="color: black;">Available Quantity</th>
+              <td style="color: black;"><input type="text"  style="border: 1px solid black;" value={{q.stock}} name="pro" readonly class="form-control" required></td>
+          </tr>
           <tr>
             <th>Quantity</th>
-            <td><input type="text" class="form-control" id="p_qnty" onchange="TextOnTextChange()"  required  name="qu"></td>
+            <td><input type="text" oninput="TextOnTextChange()" class="form-control" id="p_qnty"  required  name="qu"></td>
         </tr>
         <tr>
             <th>Amount</th>
-            <td><input type="text" class="form-control" value="{{amt}}" required id="p_amount" name="rate"></td>
+            <td><input type="text"  class="form-control" value="{{amt}}" required id="p_amount" name="rate"></td>
         </tr>
         <tr>
             <th>Total</th>
@@ -46,10 +47,18 @@
 
             </div>
        
-
+            <script type="text/javascript">
+              function TextOnTextChange()
+              {
+                  var x =document.getElementById("p_amount").value;
+                  var y =document.getElementById("p_qnty").value;
+                  document.getElementById("t_amount").value = x * y;
+              }
+          
+          </script>   
 
              
   
     </center>
-    <br><br><br><br><br><br><br><br>
-{% include 'footer.html'  %} 
+
+    {% endblock  %}

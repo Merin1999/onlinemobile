@@ -1,0 +1,61 @@
+{% extends 'mainadmin.html' %}
+
+{% block mainsec %}
+   <center>
+           <form method="post">
+            {% csrf_token %}
+            <h4 class="moveup">Sub Category</h4>
+    
+              <table class="table bclr" style="width:700px">
+                <tr>
+                    <th>Category</th>
+                    <td>
+                        <select name="cat" required class="form-control">
+                            <option>--select--</option>
+                            {% for i in q1 %}
+                            <option value="{{i.id}}">{{i.category}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+               </tr>
+                  <tr>
+                      <th style="color:black">Sub Category</th>
+                      <td><input type="text" name="scat" class="form-control" required></td>
+                  </tr>
+      
+                  <tr>
+                      <td colspan="2" align="center"><input type="submit" name="submit" value="ADD" class="btn btn-danger"></td>
+                  </tr>
+                
+             
+              </table>
+            </form>
+              <br><br><br>
+              <table class="table bclr" style="width: 700px;" >
+                <tr>
+                    <th style="color:black">SL.No</th>
+                    <th style="color:black">SubCategory</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in q %}
+                <tr>
+                    <td style="color:black">{{forloop.counter}}</td>
+                   
+                    <td style="color:black">{{i.subcategory}}</td>
+                    <td>
+                        <a class="btn btn-info" href="/admin_remove_subcategory/{{i.id}}"><img src="static/delete.png" height="30" width="30"></a>
+                    </td>
+                   
+                </tr>
+                {% endfor %}
+        
+            </table>
+     
+          </center>
+            {% endblock  %}
+       
+
+
+
+    
+    

@@ -1,0 +1,56 @@
+{% extends 'mainadmin.html' %}
+
+{% block mainsec %}
+<center>
+   {% if q %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <h4 class="moveup">Products</h4>
+          </div>
+ 
+              <table class="table bclr" style="width: 900px;margin-left: 200px;">
+                <tr>
+                    <th>SL.No</th>
+                    <th>Product</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Status</th>
+
+                    </tr>
+                  {% for i in q %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.product.product_name}}</td>
+                    <td>{{i.amount}}</td>
+                    <td>{{i.quantity}}</td>
+                    <td><img src="/static/uploads/{{i.product.image}}" height="100" weight="100"></td>
+                    <td><textarea style="background: transparent;border: none;" disabled name="" id="" cols="30" rows="10">{{i.product.p_description}}</textarea></td>
+                    <td>{{i.date}}</td>
+                    <td>{{i.rstatus}}</td>
+                    {% if i.rstatus == "Accepted" %}
+                    <td>
+                        <a class="btn btn-info" href="/admin_make_payment/{{i.id}}/{{i.amount}}">Make Payment</a>
+                    </td>
+                    {% else %}
+                    <td>{{i.rstatus}}</td>
+                    {% endif %}
+
+                    
+                    
+                  </tr>
+                  {% endfor %}
+          
+              </table>
+
+              {% endif %}
+            </div>
+       
+
+
+             
+  
+    </center>
+    {% endblock  %}

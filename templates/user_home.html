@@ -1,16 +1,14 @@
 {% include 'user_header.html'  %} 
+<div style="width: 100%;height: 300px;background: url('/static/latest/assets/img/banner.jpg');background-size: cover;background-position: top;">
 
+</div>
 
 
 <!-- top Products -->
 <div class="ads-grid py-sm-5 py-4">
   <div class="container py-xl-4 py-lg-2">
     <!-- tittle heading -->
-    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-      <span>O</span>ur
-      <span>N</span>ew
-      <span>P</span>roducts</h3>
-    <!-- //tittle heading -->
+
     <div class="row">
       <!-- product left -->
       <div class="agileinfo-ads-display col-lg-9">
@@ -19,10 +17,41 @@
           <div style="position: relative;
           left: 172px;"  class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
             <h3 class="heading-tittle text-center font-italic">New Brand Mobiles</h3>
-            <div class="row" >
+            <div class="container-fluid" >
+            <div class="row"  >
+              <form method="post">
+                {% csrf_token %}
+              <center>
+                <table class="table bclr" style="width:500px">
+                    <tr>
+                        <th> 
+                            <input  type="search"  class="form-control"  name="pla" placeholder="Search By Product / SubCategory"></th>
+                        <td><input type="submit" class="btn btn-success"  name="ser" value="SEARCH">
+                        </td>
+                    </tr>
+                </table>
+            
 
+            <table class="table bclr" style="width:500px">
+              <tr>
+                  <th> <select name="amount" id="" required class="form-control">
+                        <option value="5000">Rs. 5000 and Below</option>
+                        <option value="20000">20000 and Below</option>
+                        <option value="40000">40000 and Below</option>
+                        <option value="60000">60000 and Below</option>
+                        <option value="80000">80000 and Above</option>
+                  </select> </th>
+                     
+                  <td><input type="submit" class="btn btn-success"  name="filter" value="SEARCH">
+                  </td>
+              </tr>
+          </table>
+
+        </center>
+              </form>
+{% if q1 %}
 {% for i in q1 %}
-              <div class="col-md-4 product-men mt-5">
+              <div class="col-md-4 product-men mt-5" style="box-shadow: 0px 2px 20px lightgray;padding: 20px 0px;margin: 0% 10px;width: 280px;">
                 <div class="men-pro-item simpleCart_shelfItem">
                   <div class="men-thumb-item text-center">
                     <img style="height: 150px;" src="/static/uploads/{{ i.image }}" alt="">
@@ -36,6 +65,12 @@
                     <h4 class="pt-1">
                       <a href="">{{i.product_name}}</a>
                     </h4>
+                    <h6 class="pt-1">
+                      <a href="">{{i.ram.rams}}</a>
+                    </h6>
+                    <h6 class="pt-1">
+                      <a href="">{{i.rom.roms}}</a>
+                    </h6>
                     <div class="info-product-price my-2">
                       <span class="item_price">{{i.rate}}</span>
                       <!-- <del>$280.00</del> -->
@@ -55,7 +90,9 @@
                           {% if i.stock == "0" %}
                           <span><a href="" class="btn btn-warning">OUT OF STOCK</a></span>
                          {% else %}
-                          <span><a href="/user_add_product_to_carts/{{i.id}}/{{i.product_name}}/{{i.rate}}/{{i.stock}}" class="btn btn-danger">ADD TO CART</a></span>
+                         <span><a href="/user_view_more_details/{{i.id}}" class="btn btn-danger">MORE DETAILS</a></span>
+                         {% comment %} <span><a  href="/user_buy_product/{{i.id}}/{{i.rate}}" class="btn btn-warning">BUY NOW</a></span>
+                          <span><a href="/user_add_product_to_carts/{{i.id}}/{{i.product_name}}/{{i.rate}}/{{i.stock}}" class="btn btn-danger">ADD TO CART</a></span> {% endcomment %}
                         {% endif %}
 
                           <!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
@@ -66,10 +103,101 @@
                 </div>
               </div>
 {% endfor %}
+
+{%else%}
+<h1>No Result Match</h1>
+{%endif%}
+
+<br><br><br>
+
+{% if q4 %}
+<br><br><br><br><br><br>
+{% for i in q4 %}
+<h1>Suggested Products</h1>
+              <div class="col-md-4 product-men mt-5" style="box-shadow: 0px 2px 20px lightgray;padding: 20px 0px;margin: 0% 10px;width: 280px;">
+               
+                <div class="men-pro-item simpleCart_shelfItem">
+                  <div class="men-thumb-item text-center">
+                    <img style="height: 150px;" src="/static/uploads/{{ i.product.image }}" alt="">
+                    <div class="men-cart-pro">
+                      <div class="inner-men-cart-pro">
+                        <!-- <a href="single.html" class="link-product-add-cart">Quick View</a> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item-info-product text-center border-top mt-4">
+                    <h4 class="pt-1">
+                      <a href="">{{i.product.product_name}}</a>
+                    </h4>
+                    <h6 class="pt-1">
+                      <a href="">{{i.ram.rams}}</a>
+                    </h6>
+                    <h6 class="pt-1">
+                      <a href="">{{i.product.rom.roms}}</a>
+                    </h6>
+                    <div class="info-product-price my-2">
+                      <span class="item_price">{{i.product.rate}}</span>
+                      <!-- <del>$280.00</del> -->
+                    </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                      <form action="#" method="post">
+                        <fieldset>
+                          <input type="hidden" name="cmd" value="_cart" />
+                          <input type="hidden" name="add" value="1" />
+                          <input type="hidden" name="business" value=" " />
+                          <input type="hidden" name="item_name" value="Samsung Galaxy J7" />
+                          <input type="hidden" name="amount" value="200.00" />
+                          <input type="hidden" name="discount_amount" value="1.00" />
+                          <input type="hidden" name="currency_code" value="USD" />
+                          <input type="hidden" name="return" value=" " />
+                          <input type="hidden" name="cancel_return" value=" " />
+                          {% if i.product.stock == "0" %}
+                          <span><a href="" class="btn btn-warning">OUT OF STOCK</a></span>
+                         {% else %}
+                         <span><a href="/user_view_more_details/{{i.product.id}}" class="btn btn-danger">MORE DETAILS</a></span>
+                         {% comment %} <span><a  href="/user_buy_product/{{i.id}}/{{i.rate}}" class="btn btn-warning">BUY NOW</a></span>
+                          <span><a href="/user_add_product_to_carts/{{i.id}}/{{i.product_name}}/{{i.rate}}/{{i.stock}}" class="btn btn-danger">ADD TO CART</a></span> {% endcomment %}
+                        {% endif %}
+
+                          <!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
+                        </fieldset>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+{% endfor %}
+
+{%else%}
+<br><br><br><br><br><br>
+<h1>NO SUGGESTIONS</h1>
+{%endif%}
+
+{% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+<style>
+#panorama {
+    width: 600px;
+    height: 400px;
+}
+</style>
+</head>
+<body>
+
+
+
+<div id="panorama"></div>
+<script>
+pannellum.viewer('panorama', {
+"type": "equirectangular",
+"panorama": "/img/pt.jpg"
+}); {% endcomment %}
+</script>
              
         
           
         </div>
+      </div>
       </div>
       <!-- //product left -->
 

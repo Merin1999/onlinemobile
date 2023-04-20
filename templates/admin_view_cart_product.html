@@ -1,16 +1,13 @@
-{% include "admin_header.html" %}
+{% extends 'mainadmin.html' %}
 
-<br><br><br><br><br><br>
+{% block mainsec %}
+
+
+
 <center>
-<div >
-   
-       
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
             {% if q %}
-            <h1>Product Details</h1>
-                <table class="table table-striped" style="width:1000px" border="3">
+            <h1 class="moveup">Product Details</h1>
+                <table class="table table-striped bclr" style="width:1000px" >
                     <center>
                         <tr>
                             <th>SL.NO</th>
@@ -33,7 +30,7 @@
                             {% endfor %}
                 
                           <tr>
-                          <td colspan="6" align="center"><h2>Total : {{omtotal}}</h2></td>
+                          <td colspan="6" align="center"><h2>Total :{{omtotal}}</h2></td>
                           </tr>
                     </table>
                     {% else %}
@@ -43,19 +40,12 @@
                     {% endif %}
         </center>
         </table>
-        </div>
-      </div>
-    </div>
-  </div>
-       
-
-
 
     
     
 
-{% include "footer.html" %}
-
+    
+        {% endblock  %}
 
 
 

@@ -1,0 +1,62 @@
+{% extends 'mainadmin.html' %}
+
+{% block mainsec %}
+
+<br><br><br>
+
+<center>
+    {% if q %}
+                
+    <h1>Sales Report</h1>
+    <form method="post"><br>
+        {% csrf_token %}
+        
+        <table class=table style="width:1000px">
+            <tr>
+                <th>From Date</th>
+                <td><input type="date"  required class="form-control" name="sd"></td>
+                <th>To Date</th>
+                <td><input type="date"  required class="form-control" name="ed"></td>
+                <td><input class="btn btn-primary" type="submit" name="ser" value="Search"></td><td></td><td></td>
+            </tr>
+        </table>
+    </form>
+
+        <table class="table table-striped" style="width:1000px" border="3">
+            <center>
+               
+           
+                <tr>
+                    <th>SL.NO</th>
+                    <th>Customer</th>
+                    <th>Email</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Status</th>
+                </tr>
+                    {% for row in q %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{row.user.fname}} {{row.user.lname}}</td>
+                    <td>{{row.user.email}}</td>
+                    <td>{{row.total}}</td>
+                    <td>{{row.date}}</td>
+                    <td><a class="btn btn-primary" href="/admin_view_cart_product/{{row.id}}">Product Details</a></td>
+                   
+                   <td> <a class="btn btn-success" href="/admin_view_payments/{{row.id}}">View Payment</a></td>
+                    
+        
+                </tr>
+                    {% endfor %}
+            </table>
+            {% else %}
+            <br><br>
+            <h2>NO DATA</h2>
+            
+            <br><br><br><br>
+            {% endif %}
+</center>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %} 

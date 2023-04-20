@@ -1,101 +1,44 @@
 {% include 'public_header.html' %}
-<!-- banner -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <!-- Indicators-->
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item item1 active">
-      <div class="container">
-        <div class="w3l-space-banner">
-          <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-            <p>Get flat
-              <span>10%</span> Cashback</p>
-            <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">The
-              <span>Big</span>
-              Sale
-            </h3>
-            <a class="button2" href="/loginss">Shop Now </a>
+
+<section id="hero">
+
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+        <div data-aos="zoom-out">
+          <h1>Welcome to <span>Bismi Mobiles</span></h1>
+          <h2>Grab your latest products with us</h2>
+          <div class="text-center text-lg-start">
+            <a href="/logins" class="btn-get-started scrollto">Get Started</a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="carousel-item item2">
-      <div class="container">
-        <div class="w3l-space-banner">
-          <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-            <p>advanced
-              <span>Wireless</span> earbuds</p>
-            <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Best
-              <span>Headphone</span>
-            </h3>
-            <a class="button2" href="product.html">Shop Now </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item item3">
-      <div class="container">
-        <div class="w3l-space-banner">
-          <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-            <p>Get flat
-              <span>10%</span> Cashback</p>
-            <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">New
-              <span>Standard</span>
-            </h3>
-            <a class="button2" href="product.html">Shop Now </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item item4">
-      <div class="container">
-        <div class="w3l-space-banner">
-          <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-            <p>Get Now
-              <span>40%</span> Discount</p>
-            <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Today
-              <span>Discount</span>
-            </h3>
-            <a class="button2" href="product.html">Shop Now </a>
-          </div>
-        </div>
+      <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+        <img src="/static/latest/assets/img/hero-img.png" class="img-fluid animated" alt="">
       </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-<!-- //banner -->
 
-<!-- top Products -->
-<div class="ads-grid py-sm-5 py-4">
-  <div class="container py-xl-4 py-lg-2">
-    <!-- tittle heading -->
-    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-      <span>O</span>ur
-      <span>N</span>ew
-      <span>P</span>roducts</h3>
-    <!-- //tittle heading -->
-    <div class="row">
-      <!-- product left -->
-      <div class="agileinfo-ads-display col-lg-9">
-        <div class="wrapper" >
-          <!-- first section -->
-          <div style="position: relative;
-          left: 172px;"  class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-            <h3 class="heading-tittle text-center font-italic">New Brand Mobiles</h3>
-            <div class="row" >
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+    <defs>
+      <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+    </defs>
+    <g class="wave1">
+      <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+    </g>
+    <g class="wave2">
+      <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+    </g>
+    <g class="wave3">
+      <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+    </g>
+  </svg>
+
+</section>
+
+<div class="container">
+  <div class="row">
+
 
 {% for i in q1 %}
               <div class="col-md-4 product-men mt-5">
@@ -131,7 +74,7 @@
                           {% if i.stock == "0" %}
                           <span><a href="" class="btn btn-warning">OUT OF STOCK</a></span>
                          {% else %}
-                          <span><a href="/user_add_product_to_carts/{{i.id}}/{{i.product_name}}/{{i.rate}}/{{i.stock}}" class="btn btn-danger">ADD TO CART</a></span>
+                          <span><a href="/loginss" class="btn btn-danger">ADD TO CART</a></span>
                         {% endif %}
 
                           <!-- <input type="submit" name="submit" value="Add to cart" class="button btn" /> -->
@@ -142,20 +85,9 @@
                 </div>
               </div>
 {% endfor %}
-             
-        
-          
-        </div>
-      </div>
-      <!-- //product left -->
-
-  
-        </div>
-        <!-- //product right -->
-      </div>
-    </div>
-  </div>
 </div>
-<!-- //top products -->
+</div>
+        
+       
 
 {% include 'footer.html' %}

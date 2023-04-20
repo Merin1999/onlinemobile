@@ -1,0 +1,44 @@
+{% extends 'mainadmin.html' %}
+
+{% block mainsec %}
+
+<style>
+  .moveup{
+    margin-top: 200px;
+  }
+
+  .bclr{
+    border: 1px solid lightgray;
+    box-shadow: 2px 4px 6px lightgray;
+  }
+</style>
+
+
+<center>
+          <table class="table moveup bclr" style="width: 700px;">
+            <tr>
+                <th style="color:black">SL.NO</th>
+                <th style="color:black">Customer</th>
+                <th style="color:black">Product</th>
+                <th style="color:black">Rate</th>
+                <th style="color:black">Review</th>
+                <th style="color:black">Date</th>
+            </tr>
+                {% for row in q %}
+            <tr>
+                <td style="color:black">{{forloop.counter}}</td>
+                <td style="color:black">{{row.user.fname}} {{row.user.lname}}</td>
+                <td style="color:black">{{row.product.product_name}}</td>
+                <td style="color:black">{{row.rate}}</td>
+                <td style="color:black">{{row.reviews}}</td>
+                <td style="color:black">{{row.date}}</td>
+            </tr>
+           
+                {% endfor %}
+        </table>
+ 
+
+      </center>
+    
+    
+      {% endblock  %}

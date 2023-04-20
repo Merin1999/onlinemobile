@@ -1,15 +1,16 @@
-{% include 'admin_header.html'  %} 
+{% extends 'mainadmin.html' %}
 
-<br><br><br><br>
-<center>
+{% block mainsec %}
 <div>
+<center>
+
    
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-            <h4>Manage Products</h4>
+            <h4 class="moveup">Products</h4>
           </div>
           {% if up %}
-          <table class="table" style="width:700px" border="4">
+          <table class="table bclr" style="width:700px">
           <tr>
             <th>Product</th>
             <td><input type="text" class="form-control" required value="{{up.product_name}}" name="pro"></td>
@@ -33,21 +34,22 @@
 
 
 
+          </center>
 
-
-
+        </div>
 {% else %}
 
+          <center>
 
 
-              <table class="table" style="width:700px" border="4">
+              <table class="table bclr" style="width:700px">
                 <tr>
                     <th>Dealer</th>
                     <td>
                         <select name="dea" required class="form-control">
                             <option>--select--</option>
                             {% for i in d %}
-                            <option value="{{i.id}}">{{i.fname}} {{i.lname}}</option>
+                            <option value="{{i.id}}">{{i.company_name}} </option>
                             {% endfor %}
                         </select>
                     </td>
@@ -58,11 +60,34 @@
                         <select name="cat" required class="form-control">
                             <option>--select--</option>
                             {% for i in q1 %}
-                            <option value="{{i.id}}">{{i.category}}</option>
+                            <option value="{{i.id}}">{{i.subcategory}}</option>
                             {% endfor %}
                         </select>
                     </td>
                </tr>
+               <tr>
+                <th>Ram</th>
+                <td>
+                    <select name="ram" required class="form-control">
+                        <option>--select--</option>
+                        {% for i in q2 %}
+                        <option value="{{i.id}}">{{i.rams}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+             </tr>
+             <tr>
+                <th>Rom</th>
+                <td>
+                    <select name="rom" required class="form-control">
+                        <option>--select--</option>
+                        {% for i in q3 %}
+                        <option value="{{i.id}}">{{i.roms}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+              
                <tr>
                 <th>Product</th>
                 <td><input type="text" class="form-control" required name="pro"></td>
@@ -89,12 +114,24 @@
               </table>
             </form>
               <br><br><br>
-              <table class="table" style="width: 900px;" border="5">
+
+              <form method="post">
+                {% csrf_token %}
+                  <table>
+                    <tr>
+                      <td><input type="text" class="form-control" placeholder="search here....." name="pla"></td>
+                      <td><input type="submit" class="btn btn-success" name="search"></td>
+                    </tr>
+                  </table>
+              </form>
+              <table class="table bclr" style="width: 1200px;" >
                 <tr>
                     <th>SL.No</th>
                     <th>Dealer</th>
                     <th>Category</th>
                     <th>Product</th>
+                    <th>Ram</th>
+                    <th>Rom</th>
                     <th>Rate</th>
                     <th>Quantity</th>
                     <th>Image</th>
@@ -103,13 +140,15 @@
                   {% for i in q %}
                   <tr>
                     <td>{{forloop.counter}}</td>
-                    <td>{{i.dealer.fname}} {{i.dealer.lname}}</td>
-                    <td>{{i.category.category}}</td>
+                    <td>{{i.dealer.company_name}}</td>
+                    <td>{{i.sub_category.subcategory}}</td>
                     <td>{{i.product_name}}</td>
+                    <td>{{i.ram.rams}}</td>
+                    <td>{{i.rom.roms}}</td>
                     <td>{{i.rate}}</td>
                     <td>{{i.stock}}</td>
                     <td><img src="/static/uploads/{{i.image}}" height="100" weight="100"></td>
-                    <td><textarea name="" id="" cols="30" rows="10">{{i.p_description}}</textarea></td>
+                    <td><textarea style="border: none;background-color: transparent;" disabled name="" id="" cols="30" rows="10">{{i.p_description}}</textarea></td>
                     <td>
                         <a class="btn btn-info" href="/admin_delete_product/{{i.id}}">Delete</a>
                     </td>
@@ -129,5 +168,5 @@
              
   
     </center>
-    <br><br><br><br>
-{% include 'footer.html'  %} 
+
+    {% endblock  %}

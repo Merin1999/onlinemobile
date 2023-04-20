@@ -1,18 +1,10 @@
-{% include "admin_header.html" %}
+{% extends 'mainadmin.html' %}
 
-<br><br>
-<center>
-<div >
-   
-       
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-            <table class="table" style="width: 900px;" border="5">
+{% block mainsec %}
             <center>
                 {% if q %}
                 <h1>Bookings</h1>
-           
+           <table class="table moveup bclr">
                 <tr>
                     <th>SL.NO</th>
                     <th>Customer</th>
@@ -46,24 +38,21 @@
             </table>
             {% else %}
             <br><br>
-            <h2>NO BOOKINGS</h2>
+            <h2>NO DATA</h2>
             
             <br><br><br><br>
             {% endif %}
 </center>
 </table>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
        
 
-  <br><br><br><br><br><br><br><br>
+
 
     
-    
+{% endblock  %}
 
-{% include "footer.html" %}
+
 
 
 

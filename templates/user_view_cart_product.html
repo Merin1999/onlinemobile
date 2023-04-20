@@ -1,7 +1,8 @@
 {% include "user_header.html" %}
 
+<div style="width: 100%;height: 300px;background: url('/static/latest/assets/img/banner.jpg');background-size: cover;background-position: top;">
 
-<br><br><br><br>
+</div>
 
  
   <section class="ftco-section ftco-cart">
@@ -9,7 +10,7 @@
         <div class="row">
         <div class="col-md-12 ftco-animate">
             <div class="cart-list">
-                <table class="table" border="5">
+                <table class="table bclr" >
                     <thead class="thead-primary">
                       <tr class="text-center">
                         <th>&nbsp;</th>
@@ -42,6 +43,7 @@
                       </td>
                         
                         <td class="total">{{i.amount}}</td>
+                        <td><a class="btn btn-danger" href="/customer_remove_cart_product/{{i.id}}/{{i.booking.id}}">REMOVE</a></td>
                         {% endfor %}
                       </tr><!-- END TR-->
                       <tr>

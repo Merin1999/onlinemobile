@@ -1,0 +1,82 @@
+{% include 'public_header.html' %}
+<br><br><br><br><br><br>
+<script>
+    var check = function() {
+      if (document.getElementById('password').value ==
+        document.getElementById('confirm_password').value) {
+        document.getElementById('message').style.color = 'green';
+        document.getElementById('message').innerHTML = 'matching';
+      } else {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').innerHTML = 'not matching';
+      }
+    }
+  </script>
+
+
+     <!-- contact -->
+	<div class="mail py-5" id="contact">
+		<div class="container pb-xl-5 pb-lg-3">
+			<div class="price-sty position-relative mb-5">
+				{% comment %} <h3 class="tittle text-center text-bl mb-2"></h3> {% endcomment %}
+				<span class="text-style-bot font-weight-bold"></span>
+			</div>
+			<div class="row pt-4">
+				<div class="col-lg-7 contctf_mail_grid_right">
+					<h3 class="sub-w3ls-headf">Set New Password.</h3> 
+					<form method="post">
+                        {% csrf_token %}
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<input type="text" id="password" onkeyup='check();'  class="form-control" name="passw" placeholder="New Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+							</div>	
+						</div>
+                        <div class="row">
+							<div class="col-sm-6 form-group">
+								<input type="text" id="confirm_password"  onkeyup='check();' placeholder="Confirm Password" class="form-control" name="cpassw" required>
+                                <span id='message'></span></span>
+							</div>	
+						</div>
+                       
+						
+						<input type="submit" value="Confirm" class="btn mr-2">
+					
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+    <br><br> <br><br> <br>
+    {% comment %} <!-- banner -->
+		<div class="banner_w3lspvt">
+			<div class="container-fluid">
+				<div class="w3ls_banner_txt pl-sm-5">
+                    <h2>Forgot Password<span class="text-primary">.</span></h2>
+                    <form method="post" action="got" enctype="multipart/form-data" >
+                      <table class="table" style="width: 500px;color: black" >
+                        <tr width="500">
+                          <td>:</td>
+                          <td><input type="email" class="form-control" name="uname"></td>
+                        </tr>
+                        <tr>
+                          <td>:</td>
+                          <td><input type="text"   class="form-control" name="ph"></td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="forgot" value="Submit"></td>
+                        </tr> 
+            
+                       
+                      </table>
+                    </form>
+				</div>
+			</div>
+		</div>
+		<!-- //banner --> {% endcomment %}
+
+    
+           
+
+{% include 'footer.html' %}
+         
+

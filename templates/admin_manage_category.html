@@ -1,14 +1,12 @@
-{% include "admin_header.html" %}
-<br><br><br>
+{% extends 'mainadmin.html' %}
 
-<center>
-<div >
-   
+{% block mainsec %}
+   <center>
            <form method="post">
             {% csrf_token %}
-            <h4>Category</h4>
-          </div>
-              <table class="table" style="width:700px" border="4">
+            <h4 class="moveup">Category</h4>
+    
+              <table class="table bclr" style="width:700px">
                   <tr>
                       <th style="color:black">Category</th>
                       <td><input type="text" name="cat" class="form-control" required></td>
@@ -22,7 +20,7 @@
               </table>
             </form>
               <br><br><br>
-              <table class="table" style="width: 700px;" border="5">
+              <table class="table bclr" style="width: 700px;" >
                 <tr>
                     <th style="color:black">SL.No</th>
                     <th style="color:black">Category</th>
@@ -41,14 +39,12 @@
                 {% endfor %}
         
             </table>
-            </div>
-       
-       
+     
+          </center>
+            {% endblock  %}
        
 
 
 
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     
-
-{% include "footer.html" %}
+    

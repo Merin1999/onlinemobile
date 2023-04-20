@@ -3,8 +3,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="/user_home">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
-            <h1 class="mb-0 bread">Product Single</h1>
+          	<p class="breadcrumbs"><span class="mr-2"><a href="/user_home"></a></span> <span class="mr-2"><a href="index.html"></a></span> <span></span></p>
+            <h1 class="mb-0 bread"></h1>
           </div>
         </div>
       </div>
@@ -30,17 +30,23 @@
 							
 	        
 	          	<div class="col-md-12">
-	          		<p style="color: #000;">{{i.stock}} kg available</p>
+	          		<p style="color: #000;">{{i.stock}} available</p>
 	          	</div>
           	</div>
             <br>
-          	<p><a href="/user_add_product_to_carts/{{i.id}}/{{i.product_name}}/{{i.rate}}/{{i.stock}}" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+			{% if i.stock == "0" %}
+			<span><a href="" class="btn btn-warning">OUT OF STOCK</a></span>
+		   {% else %}
+		  
+		   <span><a  href="/user_buy_product/{{i.id}}/{{i.rate}}" class="btn btn-warning">BUY NOW</a>
+			<a href="/user_add_product_to_carts/{{i.id}}/{{i.product_name}}/{{i.rate}}/{{i.stock}}" class="btn btn-danger">ADD TO CART</a></span> 
+		  {% endif %}
     			</div>
     		</div>
     	</div>
     </section>
 {% endfor %}
-    <section class="ftco-section">
+    {% comment %} <section class="ftco-section">
     	<div class="container">
 				<div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
@@ -186,5 +192,5 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> {% endcomment %}
   {% include 'footer.html' %}

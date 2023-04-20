@@ -1,15 +1,37 @@
 {% include 'public_header.html'  %} 
 
+<section id="hero">
 
-             
-<br><br> <br><br>   
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Login</h5>
-        </div>
-        <div class="modal-body">
-            <form method="post">
+    <style>
+
+        #form{
+            width: 500px;
+            background: white;
+            padding: 20px 30px;
+            margin-left: 400px;
+        }
+
+        .col-form-label{
+            position: absolute;
+            left: 0%;
+            top: -32px;
+            color: black;
+        }
+
+        .form-group{
+            margin: 30px 5px;
+            position: relative;
+        }
+
+    </style>
+
+    <div class="container">
+      <div class="row justify-content-between">
+          <center>
+        <div class="col-sm-12 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out">
+              <form method="post" id="form">
+                  <h2 class="text-black">Login</h2>
                 {% csrf_token %}
                 <div class="form-group">
                     <label class="col-form-label">User Name</label>
@@ -20,14 +42,34 @@
                     <input type="password" class="form-control" placeholder=" " name="pwd" required="">
                 </div>
                 <div class="right-w3l">
-                    <input type="submit" class="form-control" value="Login">
+                    <input type="submit" class="btn btn-primary" value="Login">
+                    <a class="forgot" href="forgot">Forgot Your Password?</a>
                 </div>
                 
             </form>
         </div>
+    </center>
+        </div>
+      
+      </div>
     </div>
-</div>
-</div>         
-              <br><br> <br><br> <br><br> <br><br> <br><br>
+  
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+  
+  </section>
+
 
 {% include 'footer.html'  %} 
